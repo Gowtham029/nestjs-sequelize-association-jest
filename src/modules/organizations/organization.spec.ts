@@ -27,11 +27,11 @@ describe("OrganizationsService", () => {
         controller = moduleReference.get(OrganizationsController);
     });
 
-    it("** Service - Should get the users **", async () => {
+    it("** Service - Should get the organizations **", async () => {
         expect(await service.findAll()).toEqual([mockData]);
     });
 
-    it("** Controller - Should get the users **", async () => {
+    it("** Controller - Should get the organizations **", async () => {
         expect(await controller.getOrganizations()).toEqual([mockData]);
     });
 });
