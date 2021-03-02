@@ -8,6 +8,7 @@ import { LoggerModule } from "./common/interceptors/logger/logger.module";
 import { AuthMiddleware } from "./common/middlewares/auth/auth.middleware";
 import { AuthModule } from "./common/middlewares/auth/auth.module";
 import { Organizations } from "./models/organizations.model";
+import { UserDetails } from "./models/user.details.model";
 import { Users } from "./models/user.model";
 import { LoginModule } from "./modules/login/login.module";
 import { OrganizationsModule } from "./modules/organizations/organization.module";
@@ -25,7 +26,7 @@ import { UsersModule } from "./modules/users/users.module";
             username: process.env.DB_USERNAME || "admin",
             password: process.env.DB_PASSWORD || "Admin#2404",
             database: process.env.DB || "interview_task",
-            models: [Users, Organizations],
+            models: [Users, Organizations, UserDetails],
         }),
         UsersModule,
         OrganizationsModule,

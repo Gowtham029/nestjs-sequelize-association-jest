@@ -19,7 +19,7 @@ export class UsersController {
         return this.usersService.findAll();
     }
 
-    @Get("/:userid")
+    @Get("/:userid/organizations")
     @ApiResponse({
         status: HttpStatus.OK,
         description: "Get User",

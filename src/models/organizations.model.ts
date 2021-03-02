@@ -8,14 +8,14 @@ import {
     Table,
     UpdatedAt,
 } from "sequelize-typescript";
-import { Users } from "./user.model";
+import { UserDetails } from "./user.details.model";
 
 @Table({ tableName: "organizations", freezeTableName: false, timestamps: false })
 export class Organizations extends Model<Organizations> {
     @PrimaryKey
     @AutoIncrement
     @Column
-    id: number;
+    orgId: number;
 
     @Column
     name: string;
@@ -35,6 +35,6 @@ export class Organizations extends Model<Organizations> {
     @UpdatedAt
     updatedAt: Date;
 
-    @HasMany(() => Users, "id")
-    users: Users[];
+    @HasMany(() => UserDetails)
+    users: UserDetails[];
 }

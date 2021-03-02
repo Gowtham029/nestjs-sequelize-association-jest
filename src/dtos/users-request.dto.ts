@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsOptional, IsString } from "class-validator";
 
 export class UsersRequestDto {
     @ApiProperty({ example: "Karthick", description: "First Name of the User" })
@@ -11,9 +11,7 @@ export class UsersRequestDto {
     @ApiProperty({ example: "Chennai", description: "address of the User" })
     address: string;
 
-    @ApiProperty({ example: 1, description: "organization of the User" })
-    orgId: number;
-
-    @ApiProperty({ example: "1Fe1as4", description: "Password" })
-    password: string;
+    @ApiProperty({ example: 1, description: "organization Id" })
+    @IsOptional()
+    orgId?: number;
 }

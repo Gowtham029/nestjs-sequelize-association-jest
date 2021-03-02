@@ -10,9 +10,10 @@ import {
     UpdatedAt,
 } from "sequelize-typescript";
 import { Organizations } from "./organizations.model";
+import { Users } from "./user.model";
 
-@Table({ tableName: "users", freezeTableName: false, timestamps: false })
-export class Users extends Model<Users> {
+@Table({ tableName: "user_details", freezeTableName: false, timestamps: false })
+export class UserDetails extends Model<UserDetails> {
     @PrimaryKey
     @AutoIncrement
     @Column
@@ -26,9 +27,9 @@ export class Users extends Model<Users> {
     @Column
     orgId: number;
 
-    @BelongsTo(() => Organizations, "orgId")
-    organizations: Organizations;
+    @BelongsTo(() => Users, { as: "user", foreignKey: "userId" })
+    user: Users;
 
-    @BelongsTo(() => Users, "userId")
-    users: Users;
+    @BelongsTo(() => Organizations, { as: "organization", foreignKey: "orgId" })
+    organization: Organizations;
 }
