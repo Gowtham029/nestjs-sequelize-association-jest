@@ -1,9 +1,10 @@
 import { Body, Controller, Get, HttpStatus, Param, Post, Put } from "@nestjs/common";
-import { ApiBody, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiBody, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { OrganizationsResponseDto } from "../../dtos/oraganization-response.dto";
 import { OrganizationsService } from "./organization.service";
 
 @ApiTags("organizations")
+@ApiBearerAuth()
 @Controller("organizations")
 export class OrganizationsController {
     constructor(private readonly organizationsService: OrganizationsService) {}

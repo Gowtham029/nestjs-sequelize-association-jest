@@ -12,10 +12,10 @@ describe("AppController", () => {
         }).compile();
     });
 
-    describe("getHello", () => {
-        it('should return "Hello World!"', () => {
+    describe("ping test", () => {
+        it('should return "pong"', () => {
             const appController = app.get<AppController>(AppController);
-            expect(appController.getHello()).toBe("Hello World!");
+            expect(appController.ping()).toBe("pong");
         });
     });
 });

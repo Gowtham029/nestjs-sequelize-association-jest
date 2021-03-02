@@ -9,10 +9,6 @@ export class OrganizationsService {
     constructor(
         @InjectModel(Organizations)
         private organizationModel: typeof Organizations,
-        @InjectModel(Users)
-        private userModel: typeof Users,
-        @InjectModel(UserDetails)
-        private userdetailsModel: typeof UserDetails,
     ) {}
 
     public async findAll(): Promise<Organizations[]> {
@@ -21,7 +17,14 @@ export class OrganizationsService {
 
     public async findOne(orgId: number): Promise<any> {
         return this.organizationModel.findAll({
-            include: [{ model: UserDetails, include: [Users], required: true, attributes: ["id"] }],
+            include: [
+                {
+                    model: UserDetails,
+                    include: [{ model: Users, required: true }],
+                    required: true,
+                    attributes: ["userId"],
+                },
+            ],
             where: {
                 orgId,
             },

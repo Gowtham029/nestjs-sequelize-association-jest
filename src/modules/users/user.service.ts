@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { UsersRequestDto } from "src/dtos/users-request.dto";
+import { UsersRequestDto } from "../../dtos/users-request.dto";
 import { Users } from "../../models/user.model";
 import { UserDetails } from "../../models/user.details.model";
-import { Organizations } from "../../models/organizations.model";
 
 @Injectable()
 export class UsersService {
@@ -12,8 +11,6 @@ export class UsersService {
         private userModel: typeof Users,
         @InjectModel(UserDetails)
         private userdetailsModel: typeof UserDetails,
-        @InjectModel(Organizations)
-        private organizationsModel: typeof Organizations,
     ) {}
 
     public async findAll(): Promise<Users[]> {
@@ -25,9 +22,9 @@ export class UsersService {
             include: [
                 {
                     model: UserDetails,
-                    include: [{ model: Organizations, required: true, as: "organization" }],
+                    // include: [Organizations],
                     required: true,
-                    attributes: ["id"],
+                    attributes: ["orgId"],
                 },
             ],
             where: {

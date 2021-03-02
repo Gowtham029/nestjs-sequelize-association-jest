@@ -12,7 +12,7 @@ import {
 import { Organizations } from "./organizations.model";
 import { Users } from "./user.model";
 
-@Table({ tableName: "user_details", freezeTableName: false, timestamps: false })
+@Table({ tableName: "user_details", freezeTableName: false, timestamps: true })
 export class UserDetails extends Model<UserDetails> {
     @PrimaryKey
     @AutoIncrement
@@ -27,6 +27,12 @@ export class UserDetails extends Model<UserDetails> {
     @Column
     orgId: number;
 
+    @CreatedAt
+    createdAt: Date;
+
+    @UpdatedAt
+    updatedAt: Date;
+    
     @BelongsTo(() => Users, { as: "user", foreignKey: "userId" })
     user: Users;
 

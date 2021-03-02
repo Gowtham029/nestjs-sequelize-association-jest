@@ -10,8 +10,8 @@ async function bootstrap() {
     app.useGlobalFilters(new GlobalExceptionFilter());
 
     const options = new DocumentBuilder()
-        .setTitle("Boiler Plate")
-        .setDescription("The Boiler Plate API description")
+        .setTitle("Interview Task")
+        .setDescription("The Interview Task API description")
         .setVersion("1.0")
         .addTag("BoilerPlate")
         .addBearerAuth()

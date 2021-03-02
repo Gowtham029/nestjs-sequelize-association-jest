@@ -28,15 +28,15 @@ import { UsersModule } from "./modules/users/users.module";
             database: process.env.DB || "interview_task",
             models: [Users, Organizations, UserDetails],
         }),
-        UsersModule,
-        OrganizationsModule,
         LoginModule,
+        OrganizationsModule,
+        UsersModule,
     ],
     controllers: [AppController],
     providers: [AppService, GlobalExceptionFilter, { provide: APP_PIPE, useClass: ValidationPipe }],
 })
 export class AppModule {
     configure(consumer: MiddlewareConsumer): void {
-        consumer.apply().forRoutes({ path: "*", method: RequestMethod.ALL });
+        consumer.apply(AuthMiddleware).forRoutes({ path: "*", method: RequestMethod.ALL });
     }
 }
