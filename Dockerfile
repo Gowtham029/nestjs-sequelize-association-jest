@@ -13,6 +13,7 @@ EXPOSE 3000
 # Production build stage
 FROM common-build-stage as production-build-stage
 
+# Setting environment as prod
 ENV NODE_ENV production
 
 CMD ["npm", "run", "start"]
