@@ -39,7 +39,7 @@ export class UsersService {
                 where: {
                     email: data.email,
                 },
-            });
+            });  
             if (!userObject) {
                 const result = await this.userModel.create(data);
                 if (data.orgId) {

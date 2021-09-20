@@ -32,7 +32,7 @@ module.exports = options => {
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.WatchIgnorePlugin([/\.js$/, /\.d\.ts$/]),
+            new webpack.WatchIgnorePlugin({ paths: [/\.js$/, /\.d\.ts$/] }),
             new copyWebpackPlugin({
                 patterns: [
                     {
@@ -43,7 +43,7 @@ module.exports = options => {
             }),
         ],
         output: {
-            path: path.join(__dirname, "build"),
+            path: path.join(__dirname, "dist"),
             filename: "index.js",
         },
     };
