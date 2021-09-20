@@ -13,7 +13,7 @@ import { Organizations } from "./organizations.model";
 import { Users } from "./user.model";
 
 @Table({ tableName: "user_details", freezeTableName: false, timestamps: true })
-export class UserDetails extends Model<UserDetails> {
+export class UserDetails extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column
