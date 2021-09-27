@@ -27,6 +27,9 @@ import { UsersModule } from "./modules/users/users.module";
             password: process.env.DB_PASSWORD,
             database: process.env.DB,
             models: [Users, Organizations, UserDetails],
+            sync: {
+                force: true,
+            },
         }),
         LoginModule,
         OrganizationsModule,
