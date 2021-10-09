@@ -50,11 +50,10 @@ metadata:
   name: demo-app-service
 spec:
   selector:
-    app: demo-app-service
+    app: demo-app
   type: LoadBalancer
   ports:
   - port: 3000
     targetPort: 3000
     nodePort: 30000
     protocol: TCP
-
