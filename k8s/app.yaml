@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: demo-app
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: demo-app
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: gowthamrajselvam/nestjs-sample:demo-api-nestjs
+        image: gowthamrajselvam/nestjs-sample:latest
         ports:
         - containerPort: 3000
         env:
