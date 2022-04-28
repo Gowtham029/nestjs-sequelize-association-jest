@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-app
+        image: gowthamrajselvam/nestjs-sample:latest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef: 
+                name: app-secret
+                key: db-username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef: 
+                name: app-secret
+                key: db-password
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: demo-app-configmap
+                key: db_url
+          - name: DB
+            valueFrom:
+              configMapKeyRef: 
+                name: demo-app-configmap
+                key: db
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef: 
+                name: demo-app-configmap
+                key: db_port
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-app-service
+spec:
+  selector:
+    app: demo-app
+  type: LoadBalancer
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30000
+    protocol: TCP

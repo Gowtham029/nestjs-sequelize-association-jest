@@ -28,6 +28,7 @@
         "@nestjs/swagger": "5.0.9",
         "class-transformer": "0.4.0",
         "class-validator": "0.13.1",
+        "generator-nestjs-app": "^0.1.3",
         "mysql2": "2.3.0",
         "reflect-metadata": "0.1.13",
         "rxjs": "7.3.0",
